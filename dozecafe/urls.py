@@ -8,5 +8,9 @@ urlpatterns = [
         path('blog',views.blog, name="blog" ),
         path('contact',views.contact, name="contact" ),
         path('coffee',views.coffee, name="coffee" ),
+        path('order/<int:id>',views.order, name="order" ),
+
         path('signup',views.signup, name="signup" ),
+        path('login',views.login, name="login" ),
+        path('logout',views.logout, name="logout" ),
 ]
