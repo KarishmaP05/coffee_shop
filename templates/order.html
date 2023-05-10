@@ -18,8 +18,9 @@
                         {% csrf_token %}
                         <div class="mail_section_1">
                             <input type="text" class="mail_text" placeholder="{{coffee.name}}" value="{{coffee.name}}" name="name" readonly>
-                            <input type="text" class="mail_text" placeholder="{{coffee.price}}" value="{{coffee.price}}" name="price" readonly>
-                            <input type="number" class="mail_text" min="1" value="1" name="quantity">
+                            <input type="text" class="mail_text" placeholder="Price = {{coffee.price}}" value="{{coffee.price}}" name="price" id="price" readonly>
+                            <input type="number" class="mail_text" min="1" value="1" name="quantity" id="quantity" onchange="cal_totalCost()">
+                            <input type="text" class="mail_text" placeholder="Total Cost" value="Total Cost = {{coffee.price}}" name="totalcost" id="totalcost" readonly>
                             <textarea class="massage-bt" placeholder="Enter Address Here" rows="5" id="comment" name="address"></textarea>
                             <div class="send_bt">
                                 <input type="submit" value=" Confirm Order ">
@@ -31,4 +32,12 @@
         </div>
     </div>
 </div>
+{% comment %} For onchange function to calculate total Cost {% endcomment %}
+<script>
+    function cal_totalCost() {
+      var quantity = document.getElementById("quantity").value;
+      var price = document.getElementById("price").value;
+      document.getElementById("totalcost").value = "Total Cost = "+quantity*parseFloat(price);
+    }
+    </script>
 <!-- contact section end -->{% endblock mainbody %}
